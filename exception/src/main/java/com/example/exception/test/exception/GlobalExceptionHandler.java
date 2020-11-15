@@ -1,6 +1,6 @@
-package com.example.exception.exception;
+package com.example.exception.test.exception;
 
-import com.example.exception.entity.ErrorResp;
+import com.example.test.domain.ErrorResp;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * 参考: SprinBoot：简述SpringBoot控制层的统一异常处理(Rest接口)
  *      第六篇：SpringBoot统一异常处理 -- 耐凯
- *      https://www.cnblogs.com/leeego-123/p/11338063.html
  *
  * @ControllerAdvice：捕获 Controller 层抛出的异常，如果添加 @ResponseBody 返回信息则为JSON格式。
  * @RestControllerAdvice：相当于 @ControllerAdvice 与 @ResponseBody 的结合体。
@@ -36,12 +35,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
      * @param response response
      * @return 响应结果
      */
-    @ExceptionHandler(CustomException.class)
+    @ExceptionHandler(TimeoutException.class)
     public ErrorResp customExceptionHandler(HttpServletRequest request, final Exception e, HttpServletResponse response) {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
 
-        CustomException exception = (CustomException) e;
-        return new ErrorResp(exception.getCode(), exception.getMessage());
+        TimeoutException exception = (TimeoutException) e;
+        return new ErrorResp(exception.getCode(), "请求超时");
     }
 
     /**
