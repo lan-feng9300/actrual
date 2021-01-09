@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: redis-lock-cache
+
+
+  datasource:
+    url: jdbc:mysql://192.168.101.19:3306/actruldb
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+  redis:
+    host: 192.168.101.19
+    password: 123456
+
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 50000 # ms
+
+datasource:
+  username: root
+  password: 123456
+  url: jdbc:mysql://192.168.101.19:3306/gulimall_pms
+  driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 8090
