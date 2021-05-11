@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.transactional.mapper.TransactionlMapper">
+
+    <!-- 1: 动态sql 循环插入数据
+         2: 巧用 association, 关联查询某些参数值, 不只是对象类, 也可以是基本数据类型
+    -->
+
+
+    <insert id="saveStus" parameterType="list">
+        INSERT INTO `student` (id, Sname, Sage, Ssex) VALUES
+        <foreach collection="list" separator="," item="stu">
+            (
+                #{stu.id}, #{stu.name}, #{stu.age}, #{stu.sex}
+            )
+        </foreach>
+    </insert>
+</mapper>

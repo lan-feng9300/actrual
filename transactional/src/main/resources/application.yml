@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    password:
+    url:
+    username:
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
